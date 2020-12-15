@@ -21,7 +21,7 @@ var result = f2(5);
 
 document.write(result);
 
-/*
+
 //Напишите функции min и max, которые возвращают меньшее и большее из чисел a и b.
 
 document.write('\n\n --- 3 задание --- \n');
@@ -42,8 +42,8 @@ function max(a, b) {
     }
 }
 
-var a = prompt('3 задание. Введите число а:'),
-    b = prompt('3 задание. Введите число b:');
+var a = +prompt('3 задание. Введите число а:'),
+    b = +prompt('3 задание. Введите число b:');
 
 if (a == b) {
     document.write('Числа равны');
@@ -57,28 +57,25 @@ if (a == b) {
 document.write('\n\n --- 4 задание --- \n');
 
 function f4_1(a, b) {
-    var arr = [a, b];
-    return arr;
-}
-
-function f4_2(arr) {
-    arr = [];
+    var arr = [];
 
     for (var i = a; i <= b; i++) {
         arr.push(i);
     }
 
-    document.write(arr);
+    return arr;
 }
 
 a = +prompt('4 задание. Введите число начала массива:');
 b = +prompt('4 задание. Введите число конца массива:');
 
-document.write('Диапазон массива ' + f4_1(a, b) + '\n Массив ');
+function f4_2() {
+    document.write(f4_1(a, b));
+}
 
-f4_2(arr);
+f4_2();
 
-*/
+
 //Сделайте функцию isEven() (even - это четный), которая параметром принимает целое число и проверяет: четное оно или нет. Если четное - пусть функция возвращает true, если нечетное — false.
 
 document.write('\n\n --- 5 задание --- \n');
@@ -100,27 +97,26 @@ document.write(iseven(a));
 
 document.write('\n\n --- 6 задание --- \n');
 
-function f6(length) {
-    arr = [];
+function f6(arr) {
 
-    for (var a = 1; a <= length; a++) {
-        if (iseven(a)) {
-            arr.push(a);
+    for (var i = 0; i < arr.length; i++) {
+        if (iseven(arr[i]) == false) {
+            arr.splice(i, 1);
         }
     }
     
     return arr;
 }
 
-document.write(f6(a));
+document.write(f6([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]));
 
 
-//Напишите ф-цию, которая рисует следующую пирамидку (исп. вложенные циклы). Кол-во рядов должно вводиться параметром. Если пользователь ввел доп. параметр, непредусмотренный ф-цией по умолчанию - один любой символ, кроме пробела, то пирамида должна быть нарисована этим символом.
+//Напишите ф-цию, которая рисует следующую пирамидку (исп. вложенные циклы). Кол-во рядов должно вводиться параметром. Если пользователь ввел доп. параметр, непредусмотренный ф-цией по умолчанию - один любой символ, кроме пробела, то пирамида должна быть нарисована этим символом. Кол-во рядов должно вводиться параметром. Если пользователь ввел доп. параметр, непредусмотренный ф-цией по умолчанию - один любой символ, кроме пробела, то пирамида должна быть нарисована этим символом,
 
 document.write('\n\n --- 7 задание --- \n');
 
 function f7(a) {
-    if (arguments.length == 1 || arguments[1] == '') {
+    if (arguments.length == 1 || arguments[1] == '' || arguments[1] == ' ') {
         for (var i = 1; i <= a; i++) {
             for (var j = 1; j <= i; j++) {
                 document.write(i);
@@ -129,46 +125,46 @@ function f7(a) {
         }
     } else {
         for (var i = 1; i <= a; i++) {
-                for (var j = 1; j <= i; j++) {
-                    document.write(arguments[1]);
-                }
-            document.write('\n');
+            for (var j = 1; j <= i; j++) {
+                document.write(arguments[1]);
             }
+        document.write('\n');
+        }
     }
 }
 
 f7(9, '');
 
 
-//Напишите ф-цию, которая рисует равнобедренный треугольник из звездочек.
+//Напишите ф-цию, которая рисует равнобедренный треугольник из звездочек. Кол-во рядов должно вводиться с клавиатуры. Доп., напишите такую же ф-цию, но которая выведет перевернутый треугольник.
 
 document.write('\n\n --- 8 задание --- \n');
 
 function f8(a) {
     for (var i = 0; i < a; i++) {
-        for (var j = 0; j < a - i; j++) {
-            document.write('&nbsp;');
-        }
-        for (var j = 0; j <= i ; j++) {
-            document.write('*');
-        }
-    document.write('\n');
-    }
-}
-
-function f8_2(a) {
-    for (var i = 0; i < a; i++) {
-        for (var j = 0; j < a + i; j++) {
-            document.write('&nbsp;');
-        }
-        for (var j = i; j < a; j++) {
-            document.write('*');
+        for (var j = 0; j < a * 2 - 1; j++) {
+            if (j >= a - i - 1 && j <= a + i - 1) {
+                document.write('*');
+            } else {
+                document.write('&nbsp;&nbsp;');
+            }
         }
         document.write('\n');
     }
 }
-var x = ' ',
-    y = '*';
+
+function f8_2(a) {
+    for (var i = a - 1; i >= 0; i--) {
+        for (var j = 0; j < a * 2 - 1; j++) {
+            if (j >= a - i - 1 && j <= a + i - 1) {
+                document.write('*');
+            } else {
+                document.write('&nbsp;&nbsp;');
+            }
+        }
+        document.write('\n');
+    }
+}
 
 a = +prompt('8 задание. Введите высоту треугольника:');
 
@@ -188,12 +184,13 @@ function f9() {
 
     for (var i = 0; ; i++) { 
         if (i == 0 || i == 1) {
-            arr[i] = 1;
+            arr[0] = 0;
+            arr[1] = 1;
         } else {
             arr[i] = arr[i - 1] + arr[i - 2];
         }
         
-        if (arr[i] > 1000) break;
+        if (arr[i] >= 987) break;
     }
 
     return arr;
@@ -243,35 +240,111 @@ var i = 0,
 f11([2, 4, -8, 11, 23, 42, -3]); 
 
 
-//Напишите ф-цию, запрашивающую имя, фамилия, отчество и номер группы студента и выводящую введённые данные
+//Напишите ф-цию, запрашивающую имя, фамилия, отчество и номер группы студента и выводящую введённые данные. Размер рамки должен определятся автоматически по самой длинной строке. Рамку вывести в консоль.
 
 console.log('\n --- 12 задание --- \n');
 
-/*function f12(name, groupnamber) {
+function f12(name, groupnamber) {
+    
     var str1 = 'Домашняя работа: Функции',
         str2 = 'Выполнил: студент гр. ' + groupnamber,
-        str3 = name;
+        str3 = name,
+        l = 0,
+        s = '****';
 
     if (str1.length > str2.length && str1.length > str3.length) {
         for (var i = 0; i < str1.length; i++) {
-        console.log('*');
-    }
+            s += '*';
+        }
+        l = str1.length;
     } else if (str2.length > str1.length && str2.length > str3.length) {
         for (var i = 0; i < str2.length; i++) {
-            console.log('*');
+            s += '*';
         }
+        l = str2.length;
     } else {
         for (var i = 0; i < str3.length; i++) {
-            console.log('*');
+            s += '*';
         }
+        l = str3.length;
     }
-    
-    console.log(str1.push('*'));
-    console.log(str2.push('*'));
-    console.log(str3.push('*'));
+
+    var j1 = l - str1.length,
+        j2 = l - str2.length,
+        j3 = l - str3.length;
+
+    for (var i = 0; i < j1; i++) {
+        str1 += ' ';
+    }
+    for (var i = 0; i < j2; i++) {
+        str2 += ' ';
+    }
+    for (var i = 0; i < j3; i++) {
+        str3 += ' ';
+    }
+
+    console.log(s);
+    console.log('* ' + str1 + ' *');
+    console.log('* ' + str2 + ' *');
+    console.log('* ' + str3 + ' *');
+    console.log(s);
 }
 
 var name = prompt('12 задание. Введите ФИО:'),
     groupnamber = prompt('12 задание. Введите номер группы:');
 
-f12(name, groupnamber);*/
+f12(name, groupnamber);
+
+
+//Напишите ф-цию, которая должна проверить правильность ввода адреса эл. почты, неиспользуя регулярные выражения.
+//a. весь адрес не должен содержать русские буквы и спецсимволы, кроме одной «собачки», знака подчеркивания, дефиса и точки, причем они не могут быть первыми и последними в адресе, и идти подряд, например: «..», «@.», «.@» или «@@», «_@», «@-», «--» и т.п.
+//b. имя эл. почты (до знака @) должно быть длиной более 2 символов, причем имя может содержать только буквы, цифры, но не быть первыми и единственными в имени, и точку;
+//c. после последней точки и после @, домен верхнего уровня (ru, by, com и т.п.) не может быть длиной менее 2 и более 11 символов.
+
+document.write('\n\n --- 13 задание --- \n');
+
+function f13(email) {
+
+    email = prompt('13 задание. Введите электронную почту:');
+
+    for (var i = 0; i < arr_ru.length; i++) {
+        if (email.indexOf(arr_ru[i]) != -1) {
+            alert('Ошибка, присутствуют русские буквы');
+            return false;
+        } 
+    }
+
+    for (var i = 0; i < arr_symb.length; i++) {
+        if (email.indexOf(arr_symb[i]) != -1) {
+            alert('Ошибка, присутствуют спецсимволы');
+            return false;
+        } 
+    }
+
+    var n = email.split('@');
+
+    for (var i = 0; i < arr_symbol.length; i++) {
+        if (email[0] == arr_symbol[i] || email[email.length - 1] == arr_symbol[i]) {
+            alert('Ошибка, спецсимвол в начале или в конце строки');
+            return false;
+        } else if (email.indexOf(arr_symbol[i]) == email.lastIndexOf(arr_symbol[i]) - 1 || n[1].indexOf(arr_symbol[i]) == n[1].lastIndexOf(arr_symbol[i]) - 1 || n[0].indexOf(arr_symbol[i]) == n[0].lastIndexOf(arr_symbol[i]) - 1) {
+            alert('Ошибка, спецсимволы идут подряд');
+            return false;
+        }
+    }
+
+    if (n[0].length < 2 || n[1].length < 2 || n[1].length > 11) {
+        alert('Ошибка');
+        return false;
+    } 
+
+    return email;
+}
+
+let arr_ru = ['а', 'б', 'в', 'г', 'д', 'е', 'ё', 'ж', 'з', 'и', 'й', 'к', 'л', 'м', 'н', 'о', 'п', 'р', 'с', 'т', 'у', 'ф', 'х', 'ц', 'ч', 'ш', 'щ', 'ь', 'ы', 'ъ', 'э', 'ю', 'я'],
+    arr_symbol = ['@', '_', '-', '.'],
+    arr_symb = ['!', '#', '$', '%', '&', '?', '+', '=', '~'];
+
+var email = [];
+
+document.write(f13(email));
