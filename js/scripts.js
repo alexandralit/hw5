@@ -248,7 +248,7 @@ function f12(name, groupnamber) {
     
     var str1 = 'Домашняя работа: Функции',
         str2 = 'Выполнил: студент гр. ' + groupnamber,
-        str3 = name,
+        str3 = '' + name,
         l = 0,
         s = '****';
 
